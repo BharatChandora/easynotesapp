@@ -33,7 +33,7 @@ console.log(__dirname)
 if (process.env.NODE_ENV == 'production') {
 
     app.use(express.static(__dirname+'/clientapp/dist/clientapp'));
-    app.get("*", (req, res) => {
+    app.get("/*", (req, res) => {
         res.sendFile(__dirname+'/clientapp/dist/clientapp/index.html')
     })
 }
