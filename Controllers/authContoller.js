@@ -62,7 +62,7 @@ function authController() {
             let user = await User.findOne({"email": req.body.email})
 
             if (!user) {
-                return res.status(404).json('Invalid username or password')
+                return res.status(404).json({"error":'Invalid username or password'})
             }
 
             const result =  bcrypt.compareSync(req.body.password, user.password) 
