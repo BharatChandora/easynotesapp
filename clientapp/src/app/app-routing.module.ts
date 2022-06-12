@@ -5,6 +5,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ContactComponent } from './components/Contact/contact/contact.component';
 import { HomeComponent } from './components/Home/home/home.component';
+import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  {
+    path: "**", pathMatch: 'full',
+    component: PagenotfoundComponent 
+  }
 ];
 
 @NgModule({

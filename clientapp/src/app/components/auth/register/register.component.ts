@@ -67,10 +67,10 @@ export class RegisterComponent implements OnInit {
       },
       error: (err) => {
         
-        // console.log(err)
+        console.log(err)
         
 
-        this.alertService.alertDismisal("danger", err)
+        this.alertService.alertDismisal("danger", err.error.errors[0].msg)
 
       }
       

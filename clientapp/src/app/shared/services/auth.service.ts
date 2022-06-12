@@ -66,8 +66,9 @@ export class AuthService {
       errorMsg = err.error.message;
     } else {
       
-      // errorMsg = err.error.errors[0].msg
-      errorMsg = err.error
+      errorMsg = err
+      // console.log(err)
+      
          
     }
 

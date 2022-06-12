@@ -13,6 +13,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { AlertComponent } from './components/common/alert/alert.component';
 import { NoteitemComponent } from './components/Home/noteitem/noteitem.component';
 import { ModalComponent } from './components/Home/modal/modal.component';
+import { PagenotfoundComponent } from './shared/pagenotfound/pagenotfound.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ModalComponent } from './components/Home/modal/modal.component';
     LoginComponent,
     AlertComponent,
     NoteitemComponent,
-    ModalComponent
+    ModalComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

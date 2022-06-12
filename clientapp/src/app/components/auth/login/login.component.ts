@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
       },
       error: (err) => {
         
-        this.alertService.alertDismisal("danger", err.error)
+        this.alertService.alertDismisal("danger", err.error.error)
 
       }
     })
