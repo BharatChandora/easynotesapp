@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">EasyNotes</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-2 mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link"  routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  routerLinkActive="active-link" routerLink="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  routerLinkActive="active-link" routerLink="/contact">Contact</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+  <div class="mx-2" *ngIf="this.auth.isLoggedIn()">
+
+    <form [formGroup]="searchForm" (submit)="onSubmit(searchForm)" class="d-flex me-2 w-30" role="search">
+      
+      <input class="form-control me-2" (search)="resetView()" formControlName="search" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+  
+  <div class="auth d-flex px-3" *ngIf="!this.auth.isLoggedIn()">
+    <a class="nav-link me-2" routerLink="/register">Register</a>
+    <a class="nav-link" routerLink="/login">Login</a>
+  </div>
+
+  <div class="auth px-2 py-2" *ngIf="this.auth.isLoggedIn()">
+    <a class="nav-link" (click)="logout()" routerLink="/">Logout</a>
+  </div>
+</nav>
+<app-alert *ngIf="this.auth.isLoggedIn()"></app-alert>
+<router-outlet></router-outlet>

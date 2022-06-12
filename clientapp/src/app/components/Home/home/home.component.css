@@ -1,0 +1,35 @@
+.masonryholder {
+    column-count: 4;
+    column-gap: 5px;
+}
+
+.masonryblock {
+    /* display: inline-block; */
+    padding: 5px;
+    break-inside: avoid;
+}
+
+@media screen and (max-width: 768px) {
+    .masonryholder {
+        column-count: 1;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    .masonryholder {
+        column-count: 2;
+    }
+}
+
+
+@media screen and (min-width: 1000px) {
+    .masonryholder {
+        column-count: 3;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .masonryholder {
+        column-count: 4;
+    }
+}

@@ -1,0 +1,98 @@
+<!-- banner -->
+<div *ngIf="!this.auth.isLoggedIn()">
+  <div class="border bg-light" >
+    <div class="container col-xxl-8 px-4 py-5">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+          <img src="https://m.media-amazon.com/images/I/81nia28xsOL._SL1500_.jpg" class="d-block mx-lg-auto img-fluid align-items-center" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold lh-1 mb-3">Start Adding notes now.</h1>
+          <p class="lead">Important notes under your fingure tips.</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" routerLink="/register">SignUp</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4" routerLink="/login">Login</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-dark text-secondary px-4 py-5 text-center">
+    <div class="py-5">
+      <h1 class="display-5 fw-bold text-white">Easy to Use</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="fs-5 mb-4">Higly flexible, Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint soluta, repudiandae laudantium facilis numquam commodi nostrum nam laboriosam, qui illum pariatur aspernatur unde, veniam beatae? Nam repellendus officiis consectetur veritatis.</p>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- workspace -->
+<div *ngIf="this.auth.isLoggedIn()">
+
+
+
+
+<app-modal [action]="modalAction" (noteUpdatedEvent)="getallnotes()" (noteDeletedEvent)="getallnotes()" ></app-modal>
+  <!-- <div class="container w-50 mt-2">
+    <p>Welcome {{this.auth.username}}</p>
+  </div> will add this in future updates--> 
+  <div class="container bg-light border position-relative">
+    <h1 class="text-left mb-5 mt-2">Add Note</h1>
+   
+    <form [formGroup]="addnote" (ngSubmit)="onSubmit()">
+        
+        <div class="mb-3">
+            <label for="" class="form-label">Title<label class="text-danger">*</label></label>
+            <input [class.is-invalid]="f['title'].errors?.['required'] && f['title'].touched" formControlName="title" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Add title here">
+            <div class="text-danger">
+                <small *ngIf="f['title'].errors?.['required'] && f['title'].touched ">title cannot be empty</small>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Note<label class="text-danger">*</label></label>
+            <textarea rows="6" [class.is-invalid]="f['note'].errors?.['required'] && f['note'].touched" formControlName="note"  type="text" class="form-control" placeholder="Add note here"></textarea>
+            <div class="text-danger">
+                <small *ngIf="f['note'].errors?.['required'] && f['note'].touched">note cannot be empty</small>
+            </div>
+            
+        </div>
+        
+
+        <button [disabled]="addnote.invalid" type="submit" class="btn btn-primary mb-2">Add Note</button>
+
+        
+    </form>
+    
+
+  </div>
+
+  <!-- notes -->
+  
+  <div class="container border bg-light">
+    <h1 class="mb-2 pt-3">All Notes</h1>
+    <hr>
+    <!-- noteitem -->
+    <div class="masonryholder">
+      <!-- {{this.noteService.allNotes.length}}
+      {{this.noteService.allNotes | json}} -->
+      <div *ngIf="this.noteService.allNotes.length == 0">
+        <p>Nothing to display</p>
+      </div>
+
+
+      <div class="masonryblock" *ngFor="let note of this.noteService.allNotes">
+        <app-noteitem (noteEditEvent)="noteEdit()" (noteDeleteEvent)="notedelete()" [note]="note" ></app-noteitem>
+      </div>
+      
+      
+    </div>
+
+  </div>
+
+    
+
+
+</div>

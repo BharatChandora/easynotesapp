@@ -1,0 +1,58 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"  aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{action}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+           
+          <div *ngIf="action == 'Update Note'">
+            <div class="container bg-light border position-relative">
+      
+              <form [formGroup]="updatenote" (ngSubmit)="onSubmit()">
+                  
+                  
+                  <input type="hidden" formControlName="_id">
+                  <div class="mb-3">
+                      <label for="" class="form-label">Title<label class="text-danger">*</label></label>
+                      <input [class.is-invalid]="f['title'].errors?.['required'] && f['title'].touched" formControlName="title" type="text" class="form-control" aria-describedby="emailHelp" placeholder="Add title here">
+                      <div class="text-danger">
+                          <small *ngIf="f['title'].errors?.['required'] && f['title'].touched ">title cannot be empty</small>
+                      </div>
+                  </div>
+
+                  <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Note<label class="text-danger">*</label></label>
+                      <textarea rows="6" [class.is-invalid]="f['note'].errors?.['required'] && f['note'].touched" formControlName="note"  type="text" class="form-control" placeholder="Add note here"></textarea>
+                      <div class="text-danger">
+                          <small *ngIf="f['note'].errors?.['required'] && f['note'].touched">note cannot be empty</small>
+                      </div>
+                      
+                  </div>
+                  
+                  <button [disabled]="updatenote.invalid" type="submit" class="btn btn-primary mb-2" data-bs-dismiss="modal">Update Note</button>
+                  
+
+                  
+              </form>
+          
+
+            </div>
+          </div>
+          <div *ngIf="action == 'Delete Note'">
+            <div class="container bg-light border position-relative">
+
+              <p class="mt-2">Are you sure you want to delete?</p>
+  
+              <button  type="button" class="btn btn-danger mb-2" (click)="onDelete()"  data-bs-dismiss="modal">Delete Note</button>
+            </div>
+            
+          </div>
+
+
+        </div>
+        
+      </div>
+    </div>
+  </div>

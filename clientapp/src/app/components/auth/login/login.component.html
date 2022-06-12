@@ -1,0 +1,35 @@
+<app-alert></app-alert>
+<div class="container mt-5 bg-light border w-50">
+    <h1 class="text-center mb-5 mt-2 ">Login</h1>
+    <!-- {{ loginForm.value | json}} -->
+    <!-- {{f['email'].dirty}} -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address<label class="text-danger">*</label></label>
+            <input [class.is-invalid]="f['email'].errors?.['email'] && f['email'].touched && f['email'].dirty " formControlName="email" type="email" class="form-control"   aria-describedby="emailHelp">
+            <div class="text-danger">
+                <small *ngIf="f['email'].errors?.['required'] && f['email'].touched; else elseblock">email cannot be empty</small>
+                <ng-template #elseblock>
+                    <small #elseblock *ngIf="f['email'].errors?.['email'] && f['email'].touched && f['email'].dirty ">Invalid email id</small>
+                </ng-template>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password<label class="text-danger">*</label></label>
+            <input [class.is-invalid]="f['password'].errors?.['required'] && f['password'].touched" formControlName="password"  type="password" class="form-control"  >
+            <div class="text-danger">
+                <small *ngIf="f['password'].errors?.['required'] && f['password'].touched">password cannot be empty</small>
+            </div>
+            
+        </div>
+        
+
+        <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary mb-2">Login</button>
+
+        
+    </form>
+    <p>Don't have an account? <a routerLink="/register">Sign Up</a></p>
+
+</div>
