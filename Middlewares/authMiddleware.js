@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 
-JWT_KEY=process.env.JWT_KEY
+JWT_KEY=process.env.JWT_KEY || "IamtheBoss"
 
 
 function IsAuthencticated(req, res, next) {

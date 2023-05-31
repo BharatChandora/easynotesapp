@@ -2,7 +2,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 const mongoose = require('mongoose')
 
-const URI = process.env.URI
+const URI = process.env.URI || "mongodb+srv://bharatchandora:ihatepassword@cluster0.xfnd9sv.mongodb.net/?retryWrites=true&w=majority"
 
 mongoose.connect(URI)
 

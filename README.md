@@ -10,4 +10,4 @@ The idea behind developing this app is to showcase how a basic CRUD app can be d
 - [AngularJs](https://angular.io/) on the cliend
 - CSS based on [bootstrap](https://getbootstrap.com/)
 
-The app is deployed on heroku [easynotesforyou](https://easynotesforyou.herokuapp.com/)
+The app is deployed on Cyclic [easynotesforyou](https://easynotesforyou.cyclic.app/)
